@@ -136,11 +136,14 @@ def calculate_angle(line):
         
     dx = x2-x1 # TODO
     dy = y2-y1 # TODO
-    angle = np.degrees(np.arctan2(dy, dx))
-
+    angle = np.degrees(np.arctan2(dy, dx))-90
+    
     # TODO: np.arctan2 returns an angle in the range (-180, 180] degrees.
     #       Convert the angle so that the output is in the range (-90, 90].
-
+    if angle>90:
+        angle-=180
+    if angle<-90:
+        angle+=180
     return angle
 
 def line_point_distance(a, b, x, y):
